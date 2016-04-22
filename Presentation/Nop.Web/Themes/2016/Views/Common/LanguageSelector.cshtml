@@ -1,0 +1,17 @@
+﻿@model LanguageSelectorModel
+@using Nop.Web.Models.Common;
+@using Nop.Core;
+@using Nop.Core.Infrastructure;
+@if (Model.AvailableLanguages.Count > 1)
+{
+    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+    foreach (var lang in Model.AvailableLanguages)
+    {
+        if (!lang.Id.Equals(Model.CurrentLanguageId))
+        {
+            <a href="@webHelper.ModifyQueryString(Url.RouteUrl("ChangeLanguage", new {langid = lang.Id}), "returnurl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null)"
+               class="language"
+               title="@lang.Name">@lang.Name.Substring(0, 2)</a>
+        }
+    }
+}

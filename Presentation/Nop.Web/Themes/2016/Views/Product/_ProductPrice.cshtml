@@ -1,0 +1,11 @@
+﻿@model ProductDetailsModel.ProductPriceModel
+@using Nop.Web.Models.Catalog;
+<div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <p @if (string.IsNullOrWhiteSpace(Model.PriceWithDiscount)) { <text> itemprop="price" class="price" </text>    }>
+        @Html.Raw(Model.Price)
+    </p>
+    @if (!string.IsNullOrEmpty(Model.CurrencyCode))
+    {
+        <meta itemprop="priceCurrency" content="@Model.CurrencyCode" />
+    }
+</div>

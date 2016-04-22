@@ -1,0 +1,17 @@
+﻿@model TopMenuModel
+@using Nop.Web.Models.Catalog;
+
+<ul class="top-nav">
+    <li><a href="@Url.RouteUrl("HomePage")">@T("HomePage")</a></li>
+    <li><a href="/">Магазин</a></li>
+    <li><a href="@Url.RouteUrl("NewsArchive")">@T("News")</a></li>
+    @foreach (var topic in Model.Topics)
+    {
+        <li><a href="@Url.RouteUrl("Topic", new {SeName = topic.SeName})">@topic.Name</a></li>
+    }
+    <li class="bask"><a href="/" class="basket">Корзина</a></li>
+</ul>
+
+
+
+

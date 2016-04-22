@@ -1,0 +1,99 @@
+﻿@model ProductDetailsModel
+@using Nop.Core
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Services.Localization;
+@using Nop.Web.Models.Catalog;
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    //title, meta
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+
+    var seoSettings = EngineContext.Current.Resolve<SeoSettings>();
+
+    //canonical URL
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
+        Html.AddCanonicalUrlParts(productUrl);
+    }
+
+    //open graph META tags
+    if (seoSettings.OpenGraphMetaTags)
+    {
+        var storeName = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.GetLocalized(x => x.Name);
+        Html.AddHeadCustomParts("<meta property=\"og:type\" content=\"product\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:description\" content=\"" + Html.Encode(Model.MetaDescription) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:site_name\" content=\"" + Html.Encode(storeName) + "\" />");
+    }
+
+    //Twitter META tags
+    if (seoSettings.TwitterMetaTags)
+    {
+        var storeName = EngineContext.Current.Resolve<IStoreContext>().CurrentStore.GetLocalized(x => x.Name);
+        Html.AddHeadCustomParts("<meta property=\"twitter:card\" content=\"summary\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:site\" content=\"" + Html.Encode(storeName) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:description\" content=\"" + Html.Encode(Model.MetaDescription) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
+    }
+}
+
+<section class="container clearfix">
+    <h2 class="shop-skimboards">Магазин Skimboards</h2>
+    <div class="large-skimboard clearfix">
+        @Html.Partial("_ProductDetailsPictures", Model)
+
+        <div class="description-wrap">
+            <h3>@Model.Name</h3>
+            <p class="price">
+                @{
+                    var dataDictPrice = new ViewDataDictionary();
+                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                }
+                @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+            </p>
+            @if (!String.IsNullOrEmpty(Model.FullDescription))
+            {
+                <p class="description" itemprop="description">
+                    @Html.Raw(Model.FullDescription)
+                </p>
+            }
+
+            <form class="size-color" action="">
+                <p>
+                    @{
+                        var dataDictAttributes = new ViewDataDictionary();
+                        dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
+                        @Html.Partial("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
+                    }
+                </p>
+                <p class="wrap-by">
+                    <input class="by" type="submit" value="Купить">
+                </p>
+                <a href="#" class="like">Like</a>
+            </form>
+        </div>
+    </div>
+    @*<div class="slider-shop">
+            <ul class="bx-slider-two">
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+                <li><img src="img/exile-sm.jpg" alt=""></li>
+            </ul>
+        </div>*@
+</section>
+
