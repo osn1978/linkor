@@ -918,3 +918,12 @@ footer .copyright{
 	position: relative;
 	margin-left: 70px;
 } 
+.inputs {
+    margin-top: 20px; 
+}
+.inputs input{
+    height: 30px; 
+}
+.label {
+    margin-right: 12px
+}

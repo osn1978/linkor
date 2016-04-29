@@ -2140,6 +2140,7 @@
     <Content Include="Themes\2016\Views\Product\_ProductAttributes.cshtml" />
     <Content Include="Themes\2016\Views\Product\_ProductPrice.cshtml" />
     <Content Include="Themes\2016\Views\News\List.cshtml" />
+    <Content Include="Themes\2016\Views\Customer\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Roxy_Fileman\tmp\" />
