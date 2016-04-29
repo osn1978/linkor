@@ -2136,11 +2136,12 @@
     <Content Include="Themes\2016\Views\Product\HomepageProducts.cshtml" />
     <Content Include="Themes\2016\Views\Shared\_ProductBox.cshtml" />
     <Content Include="Themes\2016\Views\Product\ProductTemplate.Simple.cshtml" />
-    <Content Include="Themes\2016\Views\Shared\_ProductDetailsPictures.cshtml" />
+    <Content Include="Themes\2016\Views\Product\_ProductDetailsSlider.cshtml" />
     <Content Include="Themes\2016\Views\Product\_ProductAttributes.cshtml" />
     <Content Include="Themes\2016\Views\Product\_ProductPrice.cshtml" />
     <Content Include="Themes\2016\Views\News\List.cshtml" />
     <Content Include="Themes\2016\Views\Customer\Login.cshtml" />
+    <Content Include="Themes\2016\Views\Product\_ProductDetailsPictures.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Roxy_Fileman\tmp\" />
