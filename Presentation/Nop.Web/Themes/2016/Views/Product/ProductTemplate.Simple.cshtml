@@ -75,7 +75,11 @@
                     }
                 </p>
                 <p class="wrap-by">
-                    <input class="by" type="submit" value="Купить">
+                    @{
+                        var dataDictAddToCart = new ViewDataDictionary();
+                        dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                        @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                    }
                 </p>
                 <a href="/" class="like">Like</a>
             </form>

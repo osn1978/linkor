@@ -564,7 +564,7 @@ section .description-wrap {
 .size-color select {
     background-color: #f2f0f1;
     border: none;
-    width: 200px;
+    width: 230px;
     font-size: 16px;
     font-family: OpenSansRegular, sans-serif;
     color: #969696;
@@ -1128,4 +1128,7 @@ footer {
     box-shadow: none !important;
     border: none !important;
     background: #fff;
+}
+.category li.active a{
+    color: white;
 }

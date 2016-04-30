@@ -1,0 +1,65 @@
+@model ShoppingCartModel
+@using Nop.Core
+@using Nop.Core.Domain.Tax
+@using Nop.Core.Infrastructure
+@using Nop.Web.Models.ShoppingCart;
+@{
+    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+}
+@if (Model.Warnings.Count > 0)
+{
+    <div class="message-error">
+        <ul>
+            @foreach (var warning in Model.Warnings)
+            {
+                <li>@warning</li>
+            }
+        </ul>
+    </div>
+}
+
+    @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
+    @using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <section class="container blog clearfix">
+            <div class="wrap-basket">
+
+                @for (int i = 0; i < Model.Items.Count; i++)
+                {
+                    var item = Model.Items[i];
+                    <div class="item-order clearfix">
+                        <div class="desc left">
+                            <span class="num">@(i + 1)</span>
+                            <img alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" />
+                            <h3 class="name-desc">Patron</h3>
+                            <br />
+                            @Html.Raw(item.AttributeInfo)
+                        </div>
+                        <span class="close right">+</span>
+                        <input type="checkbox" name="removefromcart" value="@(item.Id)" style="display: none" />
+                        <div class="counter">
+                            <a href="#" class="minus">-</a>
+                            <span href="#" class="number">@(item.Quantity)</span>
+                            <a href="#" class="plus">+</a>
+                            <input name="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" style="display: none" />
+                            <div class="price-product">
+                                <span class="price-linkor">@item.SubTotal</span>
+                                <span class="price-one-item" style="display: none">@item.UnitPrice</span>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                }
+            </div>
+            <div class="by-wrap right">
+                <div class="by-product">
+                    <span class="sum"></span>
+                </div>
+                <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="by-in-basket" />
+                <button type="submit" id="checkout" name="checkout" value="checkout" class="by-in-basket">@T("Checkout.Button")</button>
+            </div>
+
+        </section>
+    }
+

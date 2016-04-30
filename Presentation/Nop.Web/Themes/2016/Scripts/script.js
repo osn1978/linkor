@@ -68,64 +68,62 @@ $(document).ready(function () {
     });
 
     ///////////*close item product*/////////////
-    var close = $('.close');
-    close.click(function () {
-        $(this).parent().remove();
+
+    var calcTotal = function () {
+        var sum = 0;
+        $(".price-linkor").each(function () {
+            sum += parseInt($(this).text().replace('$', ''));
+        });
+        $('.sum').text('$' + sum + '.00');
+    }
+
+   
+    $('.close').click(function () {
+        $(this).parent().hide();
+        $(this).next().prop('checked', true);
+        calcTotal();
     });
 
+    var setPrice = function (ctrl, quantity) {
+        var priceContainer = ctrl.nextAll('.price-product:first');
+        var priceCtrl = priceContainer.find('.price-linkor');
+        var priceOneItem = parseInt(priceContainer.find('.price-one-item').text().replace('$', ''));
+
+        priceCtrl.text('$' + parseInt(priceOneItem * quantity) + '.00');
+
+        ctrl.nextAll('.qty-input:first').val(quantity);
+        calcTotal();
+    }
     ////////*Working with the basket. Purchase of goods *///////////////
-    var minus = $('.minus'),
-    plus = $('.plus');
+    var minus = $('.minus');
+    var plus = $('.plus');
 
     minus.click(function () {
-        var num = $(this).next(),
-        integ = parseInt(num.text());
-        if (integ > 0)
+        var qty = $(this).next();
+        var quantity = parseInt(qty.text());
+        if (quantity > 0)
         {
-            integ = integ - 1;
-            num.text(integ);
-            var priceOneProduct = 350;
-            var uu = $(this).parent().find('.price-linkor');
-            var tt = integ * priceOneProduct;
-            uu.text(tt);
-            var sum = $('.sum'),
-      count = 0;
-            $(".price-linkor").each(function () {
-                count += parseInt($(this).text());
-            });
-            sum.text(count);
+            quantity--;
+            qty.text(quantity);
+
+            setPrice($(this), quantity);
             return false;
         }
     });
+
     plus.click(function () {
-        var num = $(this).prev(),
-            integ = parseInt(num.text()),
-            priceOneProduct = 350,
-            priceLinkor = $(this).parent().find('.price-linkor'),
-            sum = $('.sum'),
-            count = 0;
+        var qty = $(this).prev();
+        var quantity = parseInt(qty.text());
 
-        if (integ >= 0 && integ < 99)
+        if (quantity > 0)
         {
-            integ = integ + 1;
-            num.text(integ);
-            priceLinkor.text(integ * priceOneProduct);
-            $(".price-linkor").each(function () {
-                count += parseInt($(this).text());
-            });
-            sum.text(count);
+            quantity++;
+            qty.text(quantity);
+
+            setPrice($(this), quantity);
             return false;
         }
-
     });
 
-    var sum = $('.sum'),
-        count = 0;
-    $(".price-linkor").each(function () {
-        count += parseInt($(this).text());
-    });
-    sum.text(count);
-
-
-
+    calcTotal();
 });

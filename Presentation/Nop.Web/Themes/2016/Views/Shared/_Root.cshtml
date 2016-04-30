@@ -1,7 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/_Root.Head.cshtml";
 }
+@Html.Widget("body_start_html_tag_after")
+@Html.Partial("_Notifications")
+@Html.Action("JavaScriptDisabledWarning", "Common")
+@Html.Partial("OldInternetExplorerWarning")
 <div id="wrapper">
+    <script type="text/javascript">
+        AjaxCart.init (false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+    </script>
     <div class="content">
         <header class="clearfix">
             <a href="/" class="logo-linkor"><img src="/Themes/2016/Content/img/logoLinlor.png" alt="linkor"></a>
@@ -15,7 +22,9 @@
             <a href="#" id="touch-menu"><span></span></a>
             @Html.Action("TopMenu", "Catalog")
         </header>
+
         @RenderBody()
+
     </div>
     <footer>
         <div class="social left">
@@ -24,9 +33,12 @@
                 <a href="https://www.facebook.com/linkorskimboards/?pnref=lhc" class="icon-fb"></a>
             </div>
         </div>
-        <div class="copyright right"><p>&copy; @DateTime.Now.Year Linkor Skimboards</p></div>
+        <div class="copyright right">
+            <p>&copy; @DateTime.Now.Year Linkor Skimboards</p>
+        </div>
     </footer>
 </div>
+@Html.Widget("body_end_html_tag_before")
 
 
 
