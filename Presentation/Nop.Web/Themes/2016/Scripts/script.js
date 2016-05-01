@@ -72,9 +72,9 @@ $(document).ready(function () {
     var calcTotal = function () {
         var sum = 0;
         $(".price-linkor").each(function () {
-            sum += parseInt($(this).text().replace('$', ''));
+            sum += parseInt($(this).text().replace('$', '').replace(',', ''));
         });
-        $('.sum').text('$' + sum + '.00');
+        $('.sum').text('$' + sum);
     }
 
    
@@ -87,12 +87,11 @@ $(document).ready(function () {
     var setPrice = function (ctrl, quantity) {
         var priceContainer = ctrl.nextAll('.price-product:first');
         var priceCtrl = priceContainer.find('.price-linkor');
-        var priceOneItem = parseInt(priceContainer.find('.price-one-item').text().replace('$', ''));
+        var priceOneItem = parseInt(priceContainer.find('.price-one-item').text().replace('$', '').replace(',', ''));
 
-        priceCtrl.text('$' + parseInt(priceOneItem * quantity) + '.00');
+        priceCtrl.text('$' + parseInt(priceOneItem * quantity));
 
         ctrl.nextAll('.qty-input:first').val(quantity);
-        calcTotal();
     }
     ////////*Working with the basket. Purchase of goods *///////////////
     var minus = $('.minus');

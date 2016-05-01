@@ -45,47 +45,49 @@
         Html.AddHeadCustomParts("<meta property=\"twitter:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
     }
 }
+@using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form", @class="size-color"}))
+{
+    <section class="container clearfix">
 
-<section class="container clearfix">
-    <div class="large-skimboard clearfix">
-        @Html.Partial("_ProductDetailsPictures", Model)
+        <div class="large-skimboard clearfix">
+            @Html.Partial("_ProductDetailsPictures", Model)
 
-        <div class="description-wrap">
-            <h3>@Model.Name</h3>
-            <p class="price">
-                @{
-                    var dataDictPrice = new ViewDataDictionary();
-                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+            <div class="description-wrap">
+                <h3>@Model.Name</h3>
+                <p class="price">
+                    @{
+                        var dataDictPrice = new ViewDataDictionary();
+                        dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                    }
+                    @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+                </p>
+                @if (!String.IsNullOrEmpty(Model.FullDescription))
+                {
+                    <p class="description" itemprop="description">
+                        @Html.Raw(Model.FullDescription)
+                    </p>
                 }
-                @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
-            </p>
-            @if (!String.IsNullOrEmpty(Model.FullDescription))
-            {
-                <p class="description" itemprop="description">
-                    @Html.Raw(Model.FullDescription)
-                </p>
-            }
 
-            <form class="size-color" action="">
-                <p>
-                    @{
-                        var dataDictAttributes = new ViewDataDictionary();
-                        dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
-                        @Html.Partial("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
-                    }
-                </p>
-                <p class="wrap-by">
-                    @{
-                        var dataDictAddToCart = new ViewDataDictionary();
-                        dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
-                        @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
-                    }
-                </p>
-                <a href="/" class="like">Like</a>
-            </form>
+                <form class="size-color" action="">
+                    <p>
+                        @{
+                            var dataDictAttributes = new ViewDataDictionary();
+                            dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
+                            @Html.Partial("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
+                        }
+                    </p>
+                    <p class="wrap-by">
+                        @{
+                            var dataDictAddToCart = new ViewDataDictionary();
+                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                            @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                        }
+                    </p>
+                    <a href="/" class="like">Like</a>
+                </form>
+            </div>
         </div>
-    </div>
-    @Html.Partial("_ProductDetailsSlider", Model)
-   
-</section>
+        @Html.Partial("_ProductDetailsSlider", Model)
 
+    </section>
+}
