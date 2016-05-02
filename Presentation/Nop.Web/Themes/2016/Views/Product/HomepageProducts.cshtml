@@ -4,15 +4,12 @@
 
 @if (Model.Count > 0)
 {
-    <section class="container clearfix">
-
-        <h2>@T("HomePage.Products")</h2>
-        <div class="services-wrap clearfix">
-            @foreach (var item in Model)
-            {
-                @Html.Partial("_ProductBox", item)
-            }
-        </div>
-        <a href="/" class="btn"><span>Все доски</span></a>
-    </section>
+    <h2>@T("HomePage.Products")</h2>
+    <div class="services-wrap clearfix">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_ProductBox", item)
+        }
+    </div>
+    <a class="btn" href="@Url.RouteUrl("Category", new { SeName = "skimboards" })"><span>@T("Shop")</span></a>
 }

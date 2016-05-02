@@ -6,26 +6,26 @@
     //title
     Html.AddTitleParts(T("PageTitle.NewsArchive").Text);
 }
-<section class="container blog clearfix">
-    <h2 class="shop-skimboards">@T("News")</h2>
-    @foreach (var item in Model.NewsItems)
-    {
-        <div class="item-blog">
-            <div class="clearfix wrap-top">
-                <h3 class="left">@item.Title</h3>
-                <span class="date right">@item.CreatedOn.ToString("d")</span>
-            </div>
-            <p class="news">@Html.Raw(item.Short)</p>
-            @Html.Raw(item.Full)
+
+<h2 class="shop-skimboards">@T("News")</h2>
+@foreach (var item in Model.NewsItems)
+{
+    <div class="item-blog">
+        <div class="clearfix wrap-top">
+            <h3 class="left">@item.Title</h3>
+            <span class="date right">@item.CreatedOn.ToString("d")</span>
         </div>
-    }
-    @{
-        var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
-    }
-    @if (!pager.IsEmpty())
-    {
-        <div class="pager">
-            @pager
-        </div>
-    }  
-</section>
+        <p class="news">@Html.Raw(item.Short)</p>
+        @Html.Raw(item.Full)
+    </div>
+}
+@{
+    var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
+}
+@if (!pager.IsEmpty())
+{
+    <div class="pager">
+        @pager
+    </div>
+}
+

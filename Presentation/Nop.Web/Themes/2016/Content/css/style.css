@@ -590,6 +590,7 @@ section .description-wrap {
 }
 
 .by-in-basket,
+.buttons input,
 .size-color input[type=submit] {
     height: 60px;
     width: 200px;
@@ -598,10 +599,10 @@ section .description-wrap {
     border: none;
     background-color: #a3e1e2;
     cursor: pointer;
-    padding-right: 65px;
+    padding-right: 50px;
 }
 
-.size-color .wrap-by {
+.size-color .wrap-by, .buttons {
     display: inline-block;
     margin-top: 40px;
     position: relative;
@@ -609,17 +610,19 @@ section .description-wrap {
 
     .size-color .wrap-by:hover input[type=submit],
     .by-in-basket:hover,
+    
     .item-order .counter .minus:hover, .item-order .counter .plus:hover {
         background-color: #363636;
     }
 
     .by-in-basket:before,
+    .buttons:before,
     .size-color .wrap-by:before {
         content: '';
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 132px;
+        right: 10px;
         margin: auto;
         width: 25px;
         height: 32px;

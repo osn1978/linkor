@@ -93,6 +93,7 @@ $(document).ready(function () {
 
         ctrl.nextAll('.qty-input:first').val(quantity);
     }
+
     ////////*Working with the basket. Purchase of goods *///////////////
     var minus = $('.minus');
     var plus = $('.plus');

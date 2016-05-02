@@ -7,7 +7,7 @@
 @Html.Partial("OldInternetExplorerWarning")
 <div id="wrapper">
     <script type="text/javascript">
-        AjaxCart.init (false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
     </script>
     <div class="content">
         <header class="clearfix">
@@ -22,13 +22,31 @@
             <a href="#" id="touch-menu"><span></span></a>
             @Html.Action("TopMenu", "Catalog")
         </header>
-
-        @RenderBody()
-
+        <section class="container clearfix">
+            @RenderBody()
+        </section>
+        @{
+            var Route = HttpContext.Current.Request.RequestContext.RouteData;
+            var controllerName = Route.Values["controller"].ToString();
+            var actionName = Route.Values["action"].ToString();
+           
+            if (controllerName == "Home" && actionName == "Index")
+            {
+                <article class="clearfix">
+                    <img src="/Themes/2016/Content/img/img-footer.jpg" alt="img-girls" width="1920" height="600">
+                    <div class="wrap-info">
+                        <h2>Linkor skimboards</h2>
+                        <p>Is the new pinnacle for performance in the Wake Industry.  Through years of quiet testing we have mastered our boards to provide the peak of performance for riders of any skill level.</p>
+                        <a href="https://vimeo.com/search?q=linkorskimboards" class="btn watch-video"><span>@T("watchvideo")</span></a>
+                    </div>
+                </article>
+            }
+        }
+        
     </div>
     <footer>
         <div class="social left">
-            <p>Присоединяйтесь к нам!</p>
+            <p>@T("jointous")</p>
             <div class="social-wrap">
                 <a href="https://www.facebook.com/linkorskimboards/?pnref=lhc" class="icon-fb"></a>
             </div>

@@ -34,26 +34,26 @@
     }
 }
 
-<section class="container clearfix">
-    <div class="wrap-shop clearfix">
-        <h2 class="shop-skimboards">@T("Shop")</h2>
 
-    </div>
-    <div class="services-wrap clearfix">
-        @if (Model.Products.Count > 0)
+<div class="wrap-shop clearfix">
+    <h2 class="shop-skimboards">@T("Shop")</h2>
+
+</div>
+<div class="services-wrap clearfix">
+    @if (Model.Products.Count > 0)
         {
-            @Html.Partial("_ProductBox", Model.Products[0])
+        @Html.Partial("_ProductBox", Model.Products[0])
         }
-        <div class="services-item category">
-            @Html.Action("CategoryNavigation", "Catalog", new {currentCategoryId = currentCategoryId, currentProductId = currentProductId})
-        </div>
-       @if (Model.Products.Count > 1)
+    <div class="services-item category">
+        @Html.Action("CategoryNavigation", "Catalog", new {currentCategoryId = currentCategoryId, currentProductId = currentProductId})
+    </div>
+    @if (Model.Products.Count > 1)
         {
             foreach (var product in Model.Products.Skip(1))
             {
-                @Html.Partial("_ProductBox", product)
+        @Html.Partial("_ProductBox", product)
             }
         }
 
-    </div>
-</section>
+</div>
+

@@ -68,10 +68,14 @@ using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "mul
         <div class="by-product">
             <span class="sum"></span>
         </div>
-        <button type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="by-in-basket">@T("ShoppingCart.UpdateCart")</button>
-        <button type="submit" id="checkout" name="checkout" value="checkout" class="by-in-basket">@T("Checkout.Button")</button>
+        <button type="submit" name="updatecart" class="by-in-basket">@T("ShoppingCart.UpdateCart")</button>
+        <button type="button" onclick="location.href = '/onepagecheckout'" class="by-in-basket">@T("Account.Login.CheckoutAsGuest")</button>
     </div>
-
-
     }
+}
+else
+{
+    <div class="no-data">
+        @T("ShoppingCart.CartIsEmpty")
+    </div>
 }
