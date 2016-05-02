@@ -107,27 +107,27 @@
 
             }
             <li id="opc-payment_info" class="tab-section">
-                    <div class="step-title">
-                        <span class="number">@paymentInfoStepNumber</span>
-                        <h2 class="title">@T("Checkout.PaymentInfo")</h2>
-                    </div>
-                    <div id="checkout-step-payment-info" class="step a-item" style="display: none;">
-                        <form action="" id="co-payment-info-form">
-                            <div id="checkout-payment-info-load">
-                                 Payment is not required
-                            </div>
-                        </form>
-                        <script type="text/javascript">
-                            PaymentInfo.init ('#co-payment-info-form', '@(storeLocation)checkout/OpcSavePaymentInfo/');
-                            
-                        </script>
-                        <p class="back-link"><a href="#" onclick="Checkout.back(); return false;"><small>&laquo; </small>@T("Common.Back")</a></p>
-                        <div class="buttons" id="payment-info-buttons-container">
-                            <input type="button" class="button-1 payment-info-next-step-button" onclick="PaymentInfo.save()" value="@T("Common.Continue")" />
-                            <span class="please-wait" id="payment-info-please-wait" style="display: none;">@T("Common.LoadingNextStep")</span>
+                <div class="step-title">
+                    <span class="number">@paymentInfoStepNumber</span>
+                    <h2 class="title">@T("Checkout.PaymentInfo")</h2>
+                </div>
+                <div id="checkout-step-payment-info" class="step a-item" style="display: none;">
+                    <form action="" id="co-payment-info-form">
+                        <div id="checkout-payment-info-load">
+                            Payment is not required
                         </div>
+                    </form>
+                    <script type="text/javascript">
+                        PaymentInfo.init ('#co-payment-info-form', '@(storeLocation)checkout/OpcSavePaymentInfo/');
+
+                    </script>
+                    <p class="back-link"><a href="#" onclick="Checkout.back(); return false;"><small>&laquo; </small>@T("Common.Back")</a></p>
+                    <div class="buttons" id="payment-info-buttons-container">
+                        <input type="button" class="button-1 payment-info-next-step-button" onclick="PaymentInfo.save()" value="@T("Common.Continue")" />
+                        <span class="please-wait" id="payment-info-please-wait" style="display: none;">@T("Common.LoadingNextStep")</span>
                     </div>
-                </li>           
+                </div>
+            </li>
             <li id="opc-confirm_order" class="tab-section">
                 <div class="step-title">
                     <span class="number">@confirmOrderStepNumber</span>
@@ -164,7 +164,7 @@
         (function(){
 
             Accordion.hideSection('#opc-payment_info');
-            
+
             var originalAddClassMethod = jQuery.fn.addClass;
 
             jQuery.fn.addClass = function(){
@@ -175,7 +175,7 @@
 
             $('#opc-payment_info').bind('cssClassChanged', function() {
                 setTimeout (function() {
-                     PaymentInfo.save();
+                    PaymentInfo.save();
                 }, 50);
 
             });

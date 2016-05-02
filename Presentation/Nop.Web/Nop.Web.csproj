@@ -2152,6 +2152,7 @@
     <Content Include="Themes\2016\Views\Checkout\OnePageCheckout.cshtml" />
     <Content Include="Themes\2016\Views\ShoppingCart\OrderTotals.cshtml" />
     <Content Include="Themes\2016\Views\Topic\TopicBlock.cshtml" />
+    <Content Include="Themes\2016\Views\ShoppingCart\_OrderReviewData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Roxy_Fileman\tmp\" />
