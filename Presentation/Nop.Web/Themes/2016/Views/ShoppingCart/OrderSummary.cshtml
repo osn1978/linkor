@@ -69,7 +69,16 @@ using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "mul
             <span class="sum"></span>
         </div>
         <button type="submit" name="updatecart" class="by-in-basket">@T("ShoppingCart.UpdateCart")</button>
-        <button type="button" onclick="location.href = '/onepagecheckout'" class="by-in-basket">@T("Account.Login.CheckoutAsGuest")</button>
+        @{
+            var Route = HttpContext.Current.Request.RequestContext.RouteData;
+            var controllerName = Route.Values["controller"].ToString();
+            var actionName = Route.Values["action"].ToString();
+
+            if (controllerName == "ShoppingCart" && actionName == "Cart")
+            {
+                <button type="button" onclick="location.href = '/onepagecheckout'" class="by-in-basket">@T("Account.Login.CheckoutAsGuest")</button>
+            }            
+        }
     </div>
     }
 }

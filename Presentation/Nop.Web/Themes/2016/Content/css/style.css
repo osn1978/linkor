@@ -591,7 +591,8 @@ section .description-wrap {
 
 .by-in-basket,
 .buttons input,
-.size-color input[type=submit] {
+.size-color input[type=submit] 
+.size-color input[type=button] {
     height: 60px;
     width: 200px;
     font: 22px OpenSansRegular;
@@ -609,6 +610,7 @@ section .description-wrap {
 }
 
     .size-color .wrap-by:hover input[type=submit],
+    .size-color .wrap-by:hover input[type=button],
     .by-in-basket:hover,
     
     .item-order .counter .minus:hover, .item-order .counter .plus:hover {
@@ -1135,6 +1137,12 @@ footer {
 .category li.active a {
     color: white;
 }
+
+.order-prod-attrs {
+    text-align: left;
+    float: left;
+    margin-left: 20px;
+}
 /*********** NOTIFICATIONS  ***********/
 
 
@@ -1181,8 +1189,6 @@ footer {
         cursor: pointer;
     }
 
-.order-prod-attrs {
-    text-align: left;
-    float: left;
-    margin-left: 20px;
-}
+    .address-select {
+        width: auto;
+    }

@@ -1660,6 +1660,7 @@
     <Content Include="Themes\2016\Content\css\media-queries.css" />
     <Content Include="Themes\2016\Content\css\style-product.css" />
     <Content Include="Themes\2016\Content\css\style.css" />
+    <Content Include="Themes\2016\Content\css\styles.css" />
     <Content Include="Themes\2016\Content\images\ajax-loader-small.gif" />
     <Content Include="Themes\2016\Content\images\back-button.png" />
     <Content Include="Themes\2016\Content\images\calendar-next.png" />

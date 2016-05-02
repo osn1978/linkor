@@ -34,13 +34,13 @@
                 <div class="buttons">
                     <div class="size-color">
                         <p class="wrap-by">
-                            <input class="by" type="submit" onclick="location.href = '@Url.RouteUrl("Checkout")'" value="@T("Account.Login.CheckoutAsGuest")">
+                            <button class="by" type="submit" onclick="location.href = '@Url.RouteUrl("Checkout")'" >@T("Account.Login.CheckoutAsGuest")</button>
                         </p>
                     </div>
 
                     <div class="size-color">
                         <p class="wrap-by">
-                            <input class="by" type="submit" onclick="location.href = '@registerUrl'" value="@T("Account.Register")">
+                            <button  type="submit" onclick="location.href = '@registerUrl'" class="by-in-basket">@T("Account.Register")</button>
                         </p>
                     </div>
 
@@ -98,8 +98,8 @@
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
                 <div class="inputs reversed">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe)
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @style = "margin-bottom: 10px;margin - right: 10px; " })
+                    @Html.LabelFor(m => m.RememberMe, new { @style = "width:auto" })
                     <span class="forgot-password">
                         @Html.RouteLink(T("Account.Login.ForgotPassword").Text, "PasswordRecovery")
                     </span>
@@ -113,7 +113,7 @@
             </div>
                 <div class="size-color">
                     <p class="wrap-by">
-                        <input class="by" type="submit" value="@T("Account.Login.LoginButton")">
+                        <button class="by-in-basket" type="submit" >@T("Account.Login.LoginButton")</button>
                     </p>
                 </div>
 
