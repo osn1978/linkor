@@ -308,7 +308,7 @@ namespace Nop.Plugin.Payments.CashOnDelivery
         {
             get
             {
-                return false;
+                return true;
             }
         }
 

@@ -2147,7 +2147,6 @@
     <Content Include="Themes\2016\Views\Catalog\CategoryTemplate.ProductsInGridOrLines.cshtml" />
     <Content Include="Themes\2016\Views\ShoppingCart\FlyoutShoppingCart.cshtml" />
     <Content Include="Themes\2016\Views\ShoppingCart\Cart.cshtml" />
-    <Content Include="Themes\2016\Views\Checkout\CheckoutProgress.cshtml" />
     <Content Include="Themes\2016\Views\Product\_AddToCart.cshtml" />
     <Content Include="Themes\2016\Views\ShoppingCart\OrderSummary.cshtml" />
     <Content Include="Themes\2016\Views\Checkout\OnePageCheckout.cshtml" />
