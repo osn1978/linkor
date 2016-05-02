@@ -68,7 +68,8 @@ using (Html.BeginRouteForm("ShoppingCart", FormMethod.Post, new { enctype = "mul
         <div class="by-product">
             <span class="sum"></span>
         </div>
-        <button type="submit" name="updatecart" class="by-in-basket">@T("ShoppingCart.UpdateCart")</button>
+        
+        <button type="submit" name="updatecart" class="by-in-basket" value="@T("ShoppingCart.UpdateCart")">@T("ShoppingCart.UpdateCart")</button>
         @{
             var Route = HttpContext.Current.Request.RequestContext.RouteData;
             var controllerName = Route.Values["controller"].ToString();
