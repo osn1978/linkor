@@ -1573,7 +1573,7 @@ label, label + * {
 }
 .product-essential {
 	margin: 0 0 40px;
-	border-bottom: 1px solid #ddd;
+	/*border-bottom: 1px solid #ddd;*/
 	padding: 0 0 10px;
 }
 .product-essential:after {

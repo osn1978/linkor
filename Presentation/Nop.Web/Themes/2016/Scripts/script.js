@@ -1,36 +1,5 @@
 $(document).ready(function () {
-
-    $('.bxslider').bxSlider({
-        auto: true,
-        pause: 4000,
-        speed: 800
-    });
-    $('.bx-slider-two').bxSlider({
-        pause: 4000,
-        speed: 800,
-        maxSlides: 6,
-        slideWidth: true,
-        slideMargin: 60
-    });
-    ///////* Hover text: Linkor Wake. Positioning arrows*////////
-    var linkorWake = $("#linkorWake"),
-            bxPrev = $('.bx-prev'),
-            bxNext = $('.bx-next'),
-        withDocument = $(window).width();
-    if (withDocument > 464)
-    {
-        linkorWake.mouseover(function () {
-            bxPrev.css({ "left": "30px" });
-            bxPrev.css({ "z-index": "1" });
-            bxNext.css({ "z-index": "1" });
-            bxNext.css({ "right": "30px" });
-        });
-        linkorWake.mouseout(function () {
-            bxPrev.css({ "left": "" });
-            bxNext.css({ "right": "" });
-        });
-    }
-    //////////////////////////////////////////////////
+    
 
     /*touch-menu*/
     var touch = $('#touch-menu'),
@@ -39,6 +8,7 @@ $(document).ready(function () {
         e.preventDefault();
         menu.slideToggle();
     });
+
     $(window).resize(function () {
         var wid = $(window).width();
         if (wid > 935 && menu.is(':hidden'))
@@ -61,7 +31,7 @@ $(document).ready(function () {
         }
     });
 
-    ////////////*add class click touchMenu*////////////
+    //////////*add class click touchMenu*////////////
     var touchMenu = $('#touch-menu');
     touchMenu.click(function () {
         touchMenu.toggleClass("close-menu");
@@ -77,7 +47,7 @@ $(document).ready(function () {
         $('.sum').text('$' + sum);
     }
 
-   
+
     $('.close').click(function () {
         $(this).parent().hide();
         $(this).next().prop('checked', true);

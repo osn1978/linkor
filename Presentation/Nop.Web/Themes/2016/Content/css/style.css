@@ -565,6 +565,7 @@ section .description-wrap {
     background-color: #f2f0f1;
     border: none;
     width: 230px;
+    height: 48px;
     font-size: 16px;
     font-family: OpenSansRegular, sans-serif;
     color: #969696;
@@ -582,7 +583,7 @@ section .description-wrap {
     }
 
 .size-color .choose-size {
-    margin-right: 20px;
+    /*margin-right: 20px;*/
 }
 
 .size-color .choose-size, .size-color .choose-color {
