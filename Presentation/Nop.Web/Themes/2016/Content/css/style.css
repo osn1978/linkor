@@ -592,8 +592,7 @@ section .description-wrap {
 
 .by-in-basket,
 .buttons input,
-.size-color input[type=submit] 
-.size-color input[type=button] {
+.size-color input[type=submit] .size-color input[type=button] {
     height: 60px;
     width: 200px;
     font: 22px OpenSansRegular;
@@ -613,7 +612,6 @@ section .description-wrap {
     .size-color .wrap-by:hover input[type=submit],
     .size-color .wrap-by:hover input[type=button],
     .by-in-basket:hover,
-    
     .item-order .counter .minus:hover, .item-order .counter .plus:hover {
         background-color: #363636;
     }
@@ -1190,6 +1188,10 @@ footer {
         cursor: pointer;
     }
 
-    .address-select {
-        width: auto;
-    }
+.address-select {
+    width: auto;
+}
+
+.picture-thumbs {
+    text-align: left;
+}
