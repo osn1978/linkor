@@ -71,11 +71,5 @@
 }
 else
 {
-    if (!String.IsNullOrEmpty(Model.Title))
-    {
-        <h2>@Model.Title</h2>
-    }
-    <p class="topic-block-body">
-        @Html.Raw(Model.Body)
-    </p>
+    @Html.Raw(Model.Body)
 }
