@@ -763,20 +763,24 @@ article {
         top: 0;
         bottom: 0;
         margin: auto;
-        width: 80%;
-        height: 90%;
+        width: 95%;
+        height: 83%;
         text-align: center;
-        color: #fff;
+        /*color: #fff;*/
     }
 
         article .wrap-info h2 {
             display: inline-block;
             position: relative;
             text-transform: uppercase;
-            font-size: 1.3vw;
+            font-size: 1.2vw;
             color: #a2a2a2 !important;
         }
 
+        article .wrap-info a:link, article .wrap-info a:visited, article .wrap-info a:visited:hover, article .wrap-info a:visited:active {
+            text-decoration: underline;
+            color: #2e3ce7 !important;
+        }
         /*    article .wrap-info h2:after {
                 content: "";
                 position: absolute;
@@ -791,6 +795,7 @@ article {
 */
         article .wrap-info p {
             text-align: justify;
+            font-size: 0.9vw;
         }
 
     article .btn {
