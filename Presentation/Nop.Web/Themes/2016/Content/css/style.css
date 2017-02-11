@@ -763,8 +763,8 @@ article {
         top: 0;
         bottom: 0;
         margin: auto;
-        width: 50%;
-        height: 55%;
+        /*width: 50%;
+        height: 55%;*/
         text-align: center;
         color: #fff;
     }
