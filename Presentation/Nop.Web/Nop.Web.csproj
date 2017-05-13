@@ -627,6 +627,7 @@
     <Content Include="Content\samples\product_WomenTShirt.jpg" />
     <Content Include="Content\samples\p_attribute_print_1.jpg" />
     <Content Include="Content\samples\p_attribute_print_2.jpg" />
+    <Content Include="keepalive\index.html" />
     <Content Include="Scripts\fineuploader\edit.gif" />
     <Content Include="Scripts\fineuploader\fineuploader-4.2.2.css" />
     <Content Include="Scripts\fineuploader\fineuploader-4.2.2.min.css" />
@@ -1153,7 +1154,6 @@
     <Content Include="Themes\2016\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="keepalive\index\" />
     <Folder Include="Plugins\bin\" />
   </ItemGroup>
   <ItemGroup>
