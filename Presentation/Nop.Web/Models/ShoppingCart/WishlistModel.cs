@@ -58,6 +58,7 @@ namespace Nop.Web.Models.ShoppingCart
             public string SubTotal { get; set; }
 
             public string Discount { get; set; }
+            public int? MaximumDiscountedQty { get; set; }
 
             public int Quantity { get; set; }
             public List<SelectListItem> AllowedQuantities { get; set; }
@@ -67,6 +68,8 @@ namespace Nop.Web.Models.ShoppingCart
             public string RecurringInfo { get; set; }
 
             public string RentalInfo { get; set; }
+
+            public bool AllowItemEditing { get; set; }
 
             public IList<string> Warnings { get; set; }
 

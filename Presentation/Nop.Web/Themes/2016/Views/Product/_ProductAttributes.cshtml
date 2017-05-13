@@ -363,14 +363,14 @@
                         }
                         foreach (var attributeValue in attribute.Values)
                         {
-                            var pictureUrl = attributeValue.PictureModel.ImageUrl;
+                            var pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             if (pictureSize == pictureDefaultSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.ImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             }
                             else if (pictureSize == pictureFullSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.FullSizeImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.FullSizeImageUrl;
                             }
 
                             pictureAdjustmentTableScripts.AppendFormat(CultureInfo.InvariantCulture, "'{0}',", pictureUrl);
@@ -395,14 +395,14 @@
                         pictureAttributeScripts.AppendFormat("$('#{0}_{1}').click(function(){{{2}('{3}_{4}',{5});}});\n", controlId, attributeValue.Id, pictureAdjustmentFuncName, controlId, attributeValue.Id, attribute.ProductId);
                         foreach (var pictureSize in pictureSizes)
                         {
-                            var pictureUrl = attributeValue.PictureModel.ImageUrl;
+                            var pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             if (pictureSize == pictureDefaultSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.ImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             }
                             else if (pictureSize == pictureFullSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.FullSizeImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.FullSizeImageUrl;
                             }
                             pictureAdjustmentTableScripts.AppendFormat(CultureInfo.InvariantCulture, "{0}['{1}_{2}_{3}'] = '{4}';\n", pictureAdjustmentTableName, controlId, attributeValue.Id, pictureSize, pictureUrl);
                         }
@@ -417,14 +417,14 @@
                         pictureAttributeScripts.AppendFormat("$('#{0}_{1}').click(function(){{{2}('{3}_{4}',{5});}});\n", controlId, attributeValue.Id, pictureAdjustmentFuncName, controlId, attributeValue.Id, attribute.ProductId);
                         foreach (var pictureSize in pictureSizes)
                         {
-                            var pictureUrl = attributeValue.PictureModel.ImageUrl;
+                            var pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             if (pictureSize == pictureDefaultSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.ImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.ImageUrl;
                             }
                             else if (pictureSize == pictureFullSizePrefix)
                             {
-                                pictureUrl = attributeValue.PictureModel.FullSizeImageUrl;
+                                pictureUrl = attributeValue.ImageSquaresPictureModel.FullSizeImageUrl;
                             }
                             pictureAdjustmentTableScripts.AppendFormat(CultureInfo.InvariantCulture, "{0}['{1}_{2}_{3}'] = '{4}';\n", pictureAdjustmentTableName, controlId, attributeValue.Id, pictureSize, pictureUrl);
                         }

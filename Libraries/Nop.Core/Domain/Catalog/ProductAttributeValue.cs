@@ -33,6 +33,11 @@ namespace Nop.Core.Domain.Catalog
         public string ColorSquaresRgb { get; set; }
 
         /// <summary>
+        /// Gets or sets the picture ID for image square (used with "Image squares" attribute type)
+        /// </summary>
+        public int ImageSquaresPictureId { get; set; }
+
+        /// <summary>
         /// Gets or sets the price adjustment (used only with AttributeValueType.Simple)
         /// </summary>
         public decimal PriceAdjustment { get; set; }
@@ -46,6 +51,11 @@ namespace Nop.Core.Domain.Catalog
         /// Gets or sets the attibute value cost (used only with AttributeValueType.Simple)
         /// </summary>
         public decimal Cost { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the customer can enter the quantity of associated product (used only with AttributeValueType.AssociatedToProduct)
+        /// </summary>
+        public bool CustomerEntersQty { get; set; }
 
         /// <summary>
         /// Gets or sets the quantity of associated product (used only with AttributeValueType.AssociatedToProduct)
@@ -63,7 +73,7 @@ namespace Nop.Core.Domain.Catalog
         public int DisplayOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets the picture (identifier) associated with this value
+        /// Gets or sets the picture (identifier) associated with this value. This picture should replace a product main picture once clicked (selected).
         /// </summary>
         public int PictureId { get; set; }
 
