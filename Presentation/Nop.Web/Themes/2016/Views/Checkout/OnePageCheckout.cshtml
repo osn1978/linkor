@@ -14,7 +14,7 @@
 }
 @{
     //step numbers
-    int billingAddressStepNumber = 1;
+    int billingAddressStepNumber = 0;
     int shippingAddressStepNumber = 2;
     int shippingMethodStepNumber = 3;
     int paymentMethodStepNumber = 4;
@@ -154,6 +154,7 @@
         Accordion.init('checkout-steps', '.step-title', true);
         Accordion.openSection('#opc-billing');
         Checkout.init('@(storeLocation)cart/');
+        
         if (Billing.disableBillingAddressCheckoutStep)
         {
             Accordion.hideSection('#opc-billing');
