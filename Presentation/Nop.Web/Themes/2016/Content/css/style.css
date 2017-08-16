@@ -1200,3 +1200,8 @@ footer {
 .picture-thumbs {
     text-align: left;
 }
+
+.old-product-price span {
+    color: red;
+    text-decoration: line-through;
+}

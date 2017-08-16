@@ -1,7 +1,15 @@
 ﻿@model ProductDetailsModel.ProductPriceModel
 @using Nop.Web.Models.Catalog;
 <div class="prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-    <p @if (string.IsNullOrWhiteSpace(Model.PriceWithDiscount)) { <text> itemprop="price" class="price" </text>    }>
+    @if (!String.IsNullOrWhiteSpace(Model.OldPrice))
+    {
+        @*old price*@
+        <div class="old-product-price">
+            <label>@T("Products.Price.OldPrice"):</label>
+            <span>@Model.OldPrice</span>
+        </div>
+    }
+    <p @if (string.IsNullOrWhiteSpace(Model.PriceWithDiscount)) { <text> itemprop="price" class="price" </text>  }>
         @Html.Raw(Model.Price)
     </p>
     @if (!string.IsNullOrEmpty(Model.CurrencyCode))

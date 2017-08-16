@@ -6,7 +6,16 @@
     <div class="services-item">
         <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title">
         <h3>@Model.Name</h3>
-        <p class="price">@Model.ProductPrice.Price</p>
+       
+        <p class="price">
+            @if (!String.IsNullOrWhiteSpace(Model.ProductPrice.OldPrice))
+            {
+                <span class="old-product-price">
+                    <span>@Model.ProductPrice.OldPrice</span>
+                </span>
+            }  
+            @Model.ProductPrice.Price
+        </p>
     </div>
 </a>
 
