@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System
+@using System.Web
+@{
     Layout = "~/Views/Shared/_Root.Head.cshtml";
 }
 @{
@@ -23,7 +25,6 @@
                 <a href="https://vimeo.com/search?q=linkorskimboards" style="position: relative; display: inline-block; float: left; margin-right: 28px; margin-top: 4px;">
                     <img src="/Themes/2016/Content/img/vimeo-logo.png" style="height: 30px">
                 </a>
-                @Html.Action("LanguageSelector", "Common")
             </div>
             <a href="#" id="touch-menu"><span></span></a>
             @Html.Action("TopMenu", "Catalog")
