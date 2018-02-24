@@ -28,6 +28,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>f94c814a</NuGetPackageImportStamp>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -717,6 +718,7 @@
     <Content Include="Themes\2016\Content\img\ClassicSkim-2.png" />
     <Content Include="Themes\2016\Content\img\favicon!.ico" />
     <Content Include="Themes\2016\Content\img\img-footer.jpg" />
+    <Content Include="Themes\2016\Content\img\instagram-flat.png" />
     <Content Include="Themes\2016\Content\img\Linkor-wake-1.jpg" />
     <Content Include="Themes\2016\Content\img\Linkor-wake-2.jpg" />
     <Content Include="Themes\2016\Content\img\Linkor-wake-3.jpg" />
