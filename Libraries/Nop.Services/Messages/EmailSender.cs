@@ -123,7 +123,7 @@ namespace Nop.Services.Messages
                     }
                 }
             }
-
+            
             //send email
             using (var smtpClient = new SmtpClient())
             {

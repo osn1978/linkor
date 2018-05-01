@@ -15,8 +15,8 @@ using Nop.Web.Framework.Kendoui;
 
 namespace Nop.Admin.Controllers
 {
-	public partial class EmailAccountController : BaseAdminController
-	{
+    public partial class EmailAccountController : BaseAdminController
+    {
         private readonly IEmailAccountService _emailAccountService;
         private readonly ILocalizationService _localizationService;
         private readonly ISettingService _settingService;
@@ -42,16 +42,16 @@ namespace Nop.Admin.Controllers
             this._customerActivityService = customerActivityService;
         }
 
-		public virtual ActionResult List()
+        public virtual ActionResult List()
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
                 return AccessDeniedView();
 
-			return View();
-		}
+            return View();
+        }
 
-		[HttpPost]
-		public virtual ActionResult List(DataSourceRequest command)
+        [HttpPost]
+        public virtual ActionResult List(DataSourceRequest command)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
                 return AccessDeniedKendoGridJson();
@@ -85,7 +85,7 @@ namespace Nop.Admin.Controllers
             return RedirectToAction("List");
         }
 
-		public virtual ActionResult Create()
+        public virtual ActionResult Create()
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
                 return AccessDeniedView();
@@ -93,11 +93,11 @@ namespace Nop.Admin.Controllers
             var model = new EmailAccountModel();
             //default values
             model.Port = 25;
-			return View(model);
-		}
+            return View(model);
+        }
 
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
-		public virtual ActionResult Create(EmailAccountModel model, bool continueEditing)
+        public virtual ActionResult Create(EmailAccountModel model, bool continueEditing)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
                 return AccessDeniedView();
@@ -118,20 +118,20 @@ namespace Nop.Admin.Controllers
 
             //If we got this far, something failed, redisplay form
             return View(model);
-		}
+        }
 
-		public virtual ActionResult Edit(int id)
+        public virtual ActionResult Edit(int id)
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
                 return AccessDeniedView();
 
-			var emailAccount = _emailAccountService.GetEmailAccountById(id);
+            var emailAccount = _emailAccountService.GetEmailAccountById(id);
             if (emailAccount == null)
                 //No email account found with the specified id
                 return RedirectToAction("List");
 
-			return View(emailAccount.ToModel());
-		}
+            return View(emailAccount.ToModel());
+        }
 
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         [FormValueRequired("save", "save-continue")]
@@ -159,7 +159,7 @@ namespace Nop.Admin.Controllers
 
             //If we got this far, something failed, redisplay form
             return View(model);
-		}
+        }
 
         [HttpPost, ActionName("Edit")]
         [FormValueRequired("changepassword")]
@@ -179,7 +179,7 @@ namespace Nop.Admin.Controllers
             SuccessNotification(_localizationService.GetResource("Admin.Configuration.EmailAccounts.Fields.Password.PasswordChanged"));
             return RedirectToAction("Edit", new { id = emailAccount.Id });
         }
-        
+
         [HttpPost, ActionName("Edit")]
         [FormValueRequired("sendtestemail")]
         public virtual ActionResult SendTestEmail(EmailAccountModel model)
@@ -210,27 +210,27 @@ namespace Nop.Admin.Controllers
             }
             catch (Exception exc)
             {
-                ErrorNotification(exc.Message, false);
+                ErrorNotification($"{exc.Message} {exc.InnerException?.Message}", false);
             }
 
             //If we got this far, something failed, redisplay form
             return View(model);
         }
 
-	    [HttpPost]
-	    public virtual ActionResult Delete(int id)
-	    {
-	        if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
-	            return AccessDeniedView();
+        [HttpPost]
+        public virtual ActionResult Delete(int id)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
 
-	        var emailAccount = _emailAccountService.GetEmailAccountById(id);
-	        if (emailAccount == null)
-	            //No email account found with the specified id
-	            return RedirectToAction("List");
+            var emailAccount = _emailAccountService.GetEmailAccountById(id);
+            if (emailAccount == null)
+                //No email account found with the specified id
+                return RedirectToAction("List");
 
-	        try
-	        {
-	            _emailAccountService.DeleteEmailAccount(emailAccount);
+            try
+            {
+                _emailAccountService.DeleteEmailAccount(emailAccount);
 
                 //activity log
                 _customerActivityService.InsertActivity("DeleteEmailAccount", _localizationService.GetResource("ActivityLog.DeleteEmailAccount"), emailAccount.Id);
@@ -238,12 +238,12 @@ namespace Nop.Admin.Controllers
                 SuccessNotification(_localizationService.GetResource("Admin.Configuration.EmailAccounts.Deleted"));
 
                 return RedirectToAction("List");
-	        }
-	        catch (Exception exc)
-	        {
-	            ErrorNotification(exc);
-	            return RedirectToAction("Edit", new {id = emailAccount.Id});
-	        }
-	    }
-	}
+            }
+            catch (Exception exc)
+            {
+                ErrorNotification(exc);
+                return RedirectToAction("Edit", new { id = emailAccount.Id });
+            }
+        }
+    }
 }
